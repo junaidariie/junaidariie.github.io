@@ -445,11 +445,77 @@ footer .wrap {
   .pill { height: 54px; padding: 4px; }
   .dl { gap: 2px; }
   .dl a { padding: 10px 11px; font-size: 12px; }
-  .hero .wrap { padding-left: 0; padding-right: 8px; }
+
 }
 @media (max-width: 380px) {
   .dl a { padding: 9px 9px; font-size: 11.5px; }
-  .hero .wrap { padding-left: 0; padding-right: 8px; }
+
+}
+
+
+/* ===== Hero alignment correction: balanced gutters and unclipped CTAs ===== */
+.hero, .hero * { box-sizing: border-box; }
+.hero .wrap {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-left: clamp(16px, 4.5vw, 28px);
+  padding-right: clamp(16px, 4.5vw, 28px);
+}
+.hero h1,
+.hero p,
+.hero .actions,
+.hero .socials {
+  max-width: 100%;
+  min-width: 0;
+}
+.hero h1,
+.hero p { overflow-wrap: anywhere; }
+.hero .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+.hero .actions > *,
+.hero .actions a,
+.hero .actions button {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 640px) {
+  .hero .wrap {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hero .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero .actions > *,
+  .hero .actions a,
+  .hero .actions button {
+    width: 100%;
+    min-height: 54px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+  .hero .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+@media (max-width: 380px) {
+  .hero .wrap {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero h1 { font-size: clamp(2.35rem, 12vw, 3rem); }
 }
 
 </style>
